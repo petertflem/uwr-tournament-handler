@@ -12,11 +12,13 @@ requirejs.config({
     baseUrl: 'base/',
 
     paths: {
-
+        angular: '../common/vendor/angular/angular'
     },
 
     shim: {
-
+        angular: {
+            exports: 'angular'
+        }
     },
 
     // ask Require.js to load these files (all our tests)

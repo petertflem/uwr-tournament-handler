@@ -142,14 +142,14 @@ module.exports = function (grunt) {
                         datamain: 'app/main.js'
                     }, 
                     {
-                        src: 'http://localhost:35729/livereload.js?snipver=1'
+                        src: 'http://localhost:35729/livereload.js'
                     }
                 ],
                 csssrc: 'stylesheets/css/main.css',
                 dir: '<%= build_directory %>/src' 
             },
             compile: {
-                jssrc: [
+                js: [
                     {
                         src: 'js/main.js'
                     }
@@ -197,9 +197,9 @@ module.exports = function (grunt) {
 
             html: {
                 files: [
-                    'src/index.html'
+                    'src/index.tpl.html'
                 ],
-                tasks: ['copy:build_index'],
+                tasks: ['index:build'],
                 options: {
                     livereload: false
                 }
@@ -225,8 +225,8 @@ module.exports = function (grunt) {
         /* copy vendor assets */
         'copy:build_js',
         'copy:build_vendorjs',
-        'index:build',
-        'karma:continuous'
+        'index:build'/*,
+        'karma:continuous'*/
     ]);
 
     grunt.registerTask('compile', [
@@ -243,7 +243,7 @@ module.exports = function (grunt) {
 
         var js = this.data.js;
         var csssrc = this.data.csssrc;
-
+        
         grunt.file.copy('src/index.tpl.html', this.data.dir + '/index.html', {
             process: function (contents, path) {
                 return grunt.template.process(contents, {

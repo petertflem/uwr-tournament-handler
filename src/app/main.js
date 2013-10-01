@@ -1,10 +1,19 @@
 require.config({
-	paths: {},
-	shim: {}
+
+	paths: {
+		angular: '../common/vendor/angular/angular'
+	},
+
+	shim: {
+		angular: {
+			exports: 'angular'
+		}
+	}
+
 });
 
-require([], function () {
+require(['angular'], function (ng) {
 
-	
-
+	/* Bootstrap the angular app on the html element */
+	ng.bootstrap(document.documentElement, ['uwr_module']);
 });
