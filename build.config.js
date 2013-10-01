@@ -14,7 +14,8 @@ module.exports = {
 
 	vendor_files: {
 		js: [
-			'src/common/vendor/requirejs/require.js'
+			'src/common/vendor/requirejs/require.js',
+			'src/common/vendor/angular/angular.js'
 		],
 		css: [
 			'src/stylesheets/css/vendor/bootstrap.css',

@@ -136,13 +136,24 @@ module.exports = function (grunt) {
 
         index: {
             build: {
-                jssrc: 'common/vendor/requirejs/require.js',
-                datamain: 'app/main.js',
+                js: [
+                    {
+                        src: 'common/vendor/requirejs/require.js',
+                        datamain: 'app/main.js'
+                    }, 
+                    {
+                        src: 'http://localhost:35729/livereload.js?snipver=1'
+                    }
+                ],
                 csssrc: 'stylesheets/css/main.css',
                 dir: '<%= build_directory %>/src' 
             },
             compile: {
-                jssrc: 'js/main.js',
+                jssrc: [
+                    {
+                        src: 'js/main.js'
+                    }
+                ],
                 datamain: '',
                 csssrc: 'css/main.css',
                 dir: '<%= compiled_directory %>' 
@@ -230,16 +241,14 @@ module.exports = function (grunt) {
 
     grunt.registerMultiTask('index', 'Process index.html template', function () {
 
-        var jssrc = this.data.jssrc;
-        var datamain = this.data.datamain;
+        var js = this.data.js;
         var csssrc = this.data.csssrc;
 
         grunt.file.copy('src/index.tpl.html', this.data.dir + '/index.html', {
             process: function (contents, path) {
                 return grunt.template.process(contents, {
                     data: {
-                        jssrc: jssrc,
-                        datamain: datamain,
+                        js: js,
                         csssrc: csssrc
                     }
                 });

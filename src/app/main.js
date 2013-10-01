@@ -3,8 +3,8 @@ require.config({
 	shim: {}
 });
 
-require(['functions/compute'], function (compute) {
+require([], function () {
 
-	alert(compute.run(2));
+	
 
 });

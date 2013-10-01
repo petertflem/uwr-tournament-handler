@@ -14,6 +14,8 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <script src="<%= jssrc %>" data-main="<%= datamain %>"></script>
+        <% js.forEach( function (data) { %>
+        <script src="<%= data.src %>" data-main="<%= data.datamain %>"></script>
+        <% }); %>
     </body>
 </html>
