@@ -1,0 +1,6 @@
+{
+	"name": "uwr-tournament-handler",
+	"dependencies": {
+		"requirejs": "latest"
+	}
+}
