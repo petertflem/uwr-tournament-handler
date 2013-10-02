@@ -3,7 +3,10 @@ module.exports = {
 	build_directory: 'build',
 	compiled_directory: 'compiled',
 
-	karma_config: 'test/karma.conf.js',
+	karma_config: {
+		unit: 'test/karma.unit.conf.js',
+		e2e: 'test/karma.e2e.conf.js'
+	},
 
 	app_files: {
 		js: ['src/app/**/*.js', '!src/app/**/*.spec.js', '!src/app/test.main.js'],

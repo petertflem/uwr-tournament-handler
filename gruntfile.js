@@ -61,14 +61,17 @@ module.exports = function (grunt) {
         },
 
         karma: {
-            options: {
-                configFile: '<%= karma_config %>'
-            },
             unit: {
-                background: true
+                background: true,
+                options: {
+                    configFile: '<%= karma_config.unit %>'
+                }
             },
             continuous: {
-                singleRun: true
+                singleRun: true,
+                options: {
+                    configFile: '<%= karma_config.unit %>'
+                }
             }
         },
 

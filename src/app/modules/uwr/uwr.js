@@ -8,7 +8,7 @@ define(['angular'], function (ng) {
 					controller: 'ctrl',
 					templateUrl: 'app/modules/uwr/uwr.tpl.html'
 				})
-			.otherwise({ redirectTo: '/404' });
+			.otherwise({ redirectTo: '/' });
 	}]);
 
 	uwr.controller('ctrl', ['$scope', function ($scope){
