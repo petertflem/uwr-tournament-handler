@@ -20,7 +20,7 @@ module.exports = function (grunt) {
                 '<%= app_files.js %>'
             ],
             test: [
-                '<%= app_files.js_spec %>'
+                '<%= app_files.js_unit %>'
             ],
             gruntfile: [
                 'gruntfile.js'
@@ -211,7 +211,7 @@ module.exports = function (grunt) {
 
             jsunit: {
                 files: [
-                    '<%= app_files.js_spec %>'
+                    '<%= app_files.js_unit %>'
                 ],
                 tasks: ['jshint:test', 'karma:unit:run'],
                 options: {

@@ -4,14 +4,13 @@ module.exports = {
 	compiled_directory: 'compiled',
 
 	karma_config: {
-		unit: 'test/karma.unit.conf.js',
-		e2e: 'test/karma.e2e.conf.js'
+		unit: 'test/karma.unit.conf.js'
 	},
 
 	app_files: {
 		js: ['src/app/**/*.js', '!src/app/**/*.spec.js', '!src/app/test.main.js'],
-		js_spec: ['src/app/**/*.spec.js'],
-
+		js_unit: ['src/app/**/*.unit.spec.js'],
+		
 		less: 'src/stylesheets/less/main.less',
 
 		templates: ['app/modules/**/*.tpl.html']

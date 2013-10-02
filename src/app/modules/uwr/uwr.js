@@ -8,6 +8,11 @@ define(['angular'], function (ng) {
 					controller: 'ctrl',
 					templateUrl: 'app/modules/uwr/uwr.tpl.html'
 				})
+			.when('/home', 
+				{
+					controller: 'ctrl',
+					templateUrl: 'app/modules/uwr/uwr.tpl.html'
+				})
 			.otherwise({ redirectTo: '/' });
 	}]);
 
