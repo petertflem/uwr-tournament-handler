@@ -12,8 +12,8 @@ require.config({
 
 });
 
-require(['angular'], function (ng) {
+require(['angular', 'modules/uwr/uwr'], function (ng, uwr) {
 
 	/* Bootstrap the angular app on the html element */
-	ng.bootstrap(document.documentElement, ['uwr_module']);
+	ng.bootstrap(document.documentElement, ['uwr']);
 });

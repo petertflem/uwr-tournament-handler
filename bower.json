@@ -2,6 +2,7 @@
 	"name": "uwr-tournament-handler",
 	"dependencies": {
 		"requirejs": "latest",
-		"angular": "latest"
+		"angular": "latest",
+		"angular-mocks": "latest"
 	}
 }

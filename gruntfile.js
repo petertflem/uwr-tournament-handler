@@ -38,7 +38,7 @@ module.exports = function (grunt) {
         recess: {
             compile: {
                 src: '<%= recess.build.dest %>',
-                dest: '<%= compiled_directory %>/css/main.css',
+                dest: '<%= compiled_directory %>/stylesheets/css/main.css',
                 options: {
                     compile: true,
                     compress: true,
@@ -49,7 +49,7 @@ module.exports = function (grunt) {
             },
             build: {
                 src: '<%= app_files.less %>',
-                dest: '<%= build_directory %>/src/stylesheets/css/main.css',
+                dest: '<%= build_directory %>/stylesheets/css/main.css',
                 options: {
                     compile: true,
                     compress: false,
@@ -77,7 +77,9 @@ module.exports = function (grunt) {
                 files: [
                     {
                         src: ['<%= vendor_files.js %>'],
-                        dest: '<%= build_directory %>/'
+                        dest: '<%= build_directory %>/',
+                        expand: true,
+                        cwd: 'src/'
                     }
                 ]
             },
@@ -85,8 +87,32 @@ module.exports = function (grunt) {
             build_js: {
                 files: [
                     {
-                        src: ['<%= app_files.js %>'],
-                        dest: '<%= build_directory %>/'
+                        src: ['app/**/*.js', '!app/**/*.spec.js', '!app/test.main.js'],
+                        dest: '<%= build_directory %>/',
+                        expand: true,
+                        cwd: 'src/'
+                    }
+                ]
+            },
+
+            build_templates: {
+                files: [
+                    {
+                        src: ['<%= app_files.templates %>'],
+                        dest: '<%= build_directory %>/',
+                        expand: true,
+                        cwd: 'src/'
+                    }
+                ]
+            },
+
+            compile_templates: {
+                files: [
+                    {
+                        src: ['app/modules/**/*.tpl.html'],
+                        dest: '<%= compiled_directory %>/',
+                        expand: true,
+                        cwd: 'src/'
                     }
                 ]
             }
@@ -102,7 +128,7 @@ module.exports = function (grunt) {
             }   
         },
 
-        ngmin: {
+        /*ngmin: {
             build: {
                 files: [
                     {
@@ -113,7 +139,7 @@ module.exports = function (grunt) {
                     }
                 ]
             }
-        },
+        },*/
 
         clean: [
             '<%= build_directory %>',
@@ -125,9 +151,9 @@ module.exports = function (grunt) {
                 options: {
                     name: 'main',
                     mainConfigFile: 'src/app/main.js',
-                    out: '<%= compiled_directory %>/js/main.js',
+                    out: '<%= compiled_directory %>/app/main.js',
                     paths: {
-                        require_lib: '../../build/src/common/vendor/requirejs/require'
+                        require_lib: '../../build/common/vendor/requirejs/require'
                     },
                     include: ['require_lib']
                 }
@@ -146,16 +172,16 @@ module.exports = function (grunt) {
                     }
                 ],
                 csssrc: 'stylesheets/css/main.css',
-                dir: '<%= build_directory %>/src' 
+                dir: '<%= build_directory %>' 
             },
             compile: {
                 js: [
                     {
-                        src: 'js/main.js'
+                        src: 'app/main.js'
                     }
                 ],
                 datamain: '',
-                csssrc: 'css/main.css',
+                csssrc: 'stylesheets/css/main.css',
                 dir: '<%= compiled_directory %>' 
             }
         },
@@ -177,14 +203,14 @@ module.exports = function (grunt) {
                 files: [
                     '<%= app_files.js %>'
                 ],
-                tasks: ['jshint:src'/*, 'karma:unit:run'*/, 'copy:build_js']
+                tasks: ['jshint:src', 'karma:unit:run', 'copy:build_js']
             },
 
             jsunit: {
                 files: [
                     '<%= app_files.js_spec %>'
                 ],
-                tasks: ['jshint:test'/*, 'karma:unit:run'*/],
+                tasks: ['jshint:test', 'karma:unit:run'],
                 options: {
                     livereload: false
                 }
@@ -223,16 +249,18 @@ module.exports = function (grunt) {
         'concat:build_css',
         /* copy assets */
         /* copy vendor assets */
+        'copy:build_templates',
         'copy:build_js',
         'copy:build_vendorjs',
-        'index:build'/*,
-        'karma:continuous'*/
+        'index:build',
+        'karma:continuous'
     ]);
 
     grunt.registerTask('compile', [
-        'recess:compile', 
+        'recess:compile',
+        'copy:compile_templates',
         /* copy assets to compile dir */ 
-        'ngmin',
+        //'ngmin',
         'requirejs',
         'index:compile'
     ]);

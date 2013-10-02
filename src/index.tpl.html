@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html data-ng-app="">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,10 +14,9 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <div>
-            Name: <input type="text" data-ng-model="name" /> {{name}}
-        </div>
-  
+        <!-- placeholder for the views -->
+        <div data-ng-view=""></div>
+
         <!-- JavaScript includes -->
         <% js.forEach( function (data) { %>
         <script src="<%= data.src %>" data-main="<%= data.datamain %>"></script>

@@ -12,12 +12,16 @@ requirejs.config({
     baseUrl: 'base/',
 
     paths: {
-        angular: '../common/vendor/angular/angular'
+        angular: 'common/vendor/angular/angular',
+        angular_mocks: 'common/vendor/angular-mocks/angular-mocks.js'
     },
 
     shim: {
         angular: {
             exports: 'angular'
+        },
+        angular_mocks: {
+            exports: 'angular_mocks'
         }
     },
 
