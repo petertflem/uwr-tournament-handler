@@ -1,5 +1,7 @@
 require.config({
 
+	baseUrl: './',
+
 	paths: {
 		angular: 'common/vendor/angular/angular'
 	},
