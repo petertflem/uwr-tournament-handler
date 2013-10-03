@@ -1,11 +1,17 @@
 define([
+	/* LIBRARIES */
 	'angular', 
+
+	/* PAGES */
 	'app/modules/uwr/home/home',
 	'app/modules/uwr/tournaments/tournaments',
-	'app/modules/uwr/about/about'
-], function (ng, home, tournaments, about) {
+	'app/modules/uwr/about/about',
 
-	var uwr = ng.module('uwr', []);
+	/* COMMON COMPONENTS */
+	'common/components/directives/directives'
+], function (ng, home, tournaments, about, directives) {
+
+	var uwr = ng.module('uwr', ['directives']);
 
 	/* Initialize sections */
 	home.init.call(uwr);

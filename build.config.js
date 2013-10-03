@@ -9,13 +9,15 @@ module.exports = {
 
 	app_files: {
 		js: ['src/app/**/*.js', 
+			'src/common/components/**/*.js',
 			'!src/app/**/*.spec.js', 
 			'!src/app/unit.main.js'],
 		js_unit: ['src/app/**/*.unit.spec.js'],
 		
-		less: 'src/stylesheets/less/main.less',
+		less_main: 'src/stylesheets/less/main.less',
+		less: 'src/app/**/*.less',
 
-		templates: ['app/**/*.tpl.html']
+		templates: ['app/**/*.tpl.html', 'common/components/**/*.tpl.html']
 	},
 
 	vendor_files: {

@@ -7,7 +7,7 @@ define([], function () {
 		this.tournaments_controller = 'tournaments_controller';
 
 		this.controller(this.tournaments_controller, ['$scope', function ($scope) {
-			console.log('Tournaments controller!');
+
 		}]);
 	};
 

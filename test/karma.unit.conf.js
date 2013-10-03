@@ -9,6 +9,7 @@ module.exports = function (config) {
 		'app/unit.main.js',
 		'common/vendor/angular-mocks/angular-mocks.js',
         {pattern: 'app/**/*.js', included: false},
+        {pattern: 'common/components/**/*.js', included: false},
         {pattern: 'app/**/*.unit.spec.js', included: false}
     ]);
 

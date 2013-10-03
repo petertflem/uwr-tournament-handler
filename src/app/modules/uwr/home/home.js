@@ -7,7 +7,7 @@ define([], function () {
 		this.home_controller = 'home_controller';
 
 		this.controller(this.home_controller, ['$scope', function ($scope) {
-			console.log('Home controller!');
+
 		}]);
 	};
 

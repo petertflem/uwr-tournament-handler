@@ -7,7 +7,7 @@ define([], function () {
 		this.about_controller = 'about_controller';
 
 		this.controller(this.about_controller, ['$scope', function ($scope) {
-			console.log('About controller!');
+
 		}]);
 	};
 

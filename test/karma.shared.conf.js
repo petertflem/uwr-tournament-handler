@@ -6,7 +6,7 @@ var shared = function(config) {
         singleRun: false,
         colors: true,
         captureTimeout: 60000,
-        autoWatch: false,
+        autoWatch: true,
         logLevel: config.LOG_INFO,
         port: 9876
     });

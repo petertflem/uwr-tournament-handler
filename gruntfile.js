@@ -30,7 +30,9 @@ module.exports = function (grunt) {
                 newcap: true,
                 noarg: true,
                 sub: true,
-                boss: true
+                boss: true,
+                eqeqeq: true,
+                expr: true
             },
             globals: {}
         },
@@ -48,7 +50,7 @@ module.exports = function (grunt) {
                 }
             },
             build: {
-                src: '<%= app_files.less %>',
+                src: '<%= app_files.less_main %>',
                 dest: '<%= build_directory %>/stylesheets/css/main.css',
                 options: {
                     compile: true,
@@ -90,7 +92,7 @@ module.exports = function (grunt) {
             build_js: {
                 files: [
                     {
-                        src: ['app/**/*.js', '!app/**/*.spec.js', '!app/unit.main.js'],
+                        src: ['app/**/*.js', 'common/components/**/*.js','!app/**/*.spec.js', '!app/unit.main.js'],
                         dest: '<%= build_directory %>/',
                         expand: true,
                         cwd: 'src/'
@@ -112,7 +114,7 @@ module.exports = function (grunt) {
             compile_templates: {
                 files: [
                     {
-                        src: ['app/modules/**/*.tpl.html'],
+                        src: ['<%= app_files.templates %>'],
                         dest: '<%= compiled_directory %>/',
                         expand: true,
                         cwd: 'src/'
@@ -130,19 +132,6 @@ module.exports = function (grunt) {
                 dest: '<%= recess.build.dest %>'
             }   
         },
-
-        /*ngmin: {
-            build: {
-                files: [
-                    {
-                        src: ['<%= app_files.js %>'],
-                        cwd: '<%= build_directory %>',
-                        dest: '<%= build_directory %>',
-                        expand: true
-                    }
-                ]
-            }
-        },*/
 
         clean: [
             '<%= build_directory %>',
@@ -211,14 +200,14 @@ module.exports = function (grunt) {
                 files: [
                     '<%= app_files.js %>'
                 ],
-                tasks: ['jshint:src', 'karma:unit:run', 'copy:build_js']
+                tasks: ['jshint:src'/*, 'karma:unit:run'*/, 'copy:build_js']
             },
 
             jsunit: {
                 files: [
                     '<%= app_files.js_unit %>'
                 ],
-                tasks: ['jshint:test', 'karma:unit:run'],
+                tasks: ['jshint:test'/*, 'karma:unit:run'*/],
                 options: {
                     livereload: false
                 }
@@ -226,7 +215,7 @@ module.exports = function (grunt) {
 
             less: {
                 files: '<%= app_files.less %>',
-                tasks: ['recess:build']
+                tasks: ['recess:build', 'concat:build_css']
             },
 
             html: {
@@ -240,7 +229,12 @@ module.exports = function (grunt) {
             },
 
             build_html: {
-                files: ['build/src/index.html']
+                files: ['build/index.html']
+            },
+
+            tpl: {
+                files: ['src/**/*.tpl.html', '!src/index.tpl.html'],
+                tasks: ['copy:build_templates']
             }
         }
     };
