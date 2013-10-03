@@ -7,6 +7,7 @@ module.exports = function (config) {
 
     config.files = shared.files.concat([
 		'app/unit.main.js',
+		'common/vendor/angular-mocks/angular-mocks.js',
         {pattern: 'app/**/*.js', included: false},
         {pattern: 'app/**/*.unit.spec.js', included: false}
     ]);

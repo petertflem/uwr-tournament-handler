@@ -8,12 +8,14 @@ module.exports = {
 	},
 
 	app_files: {
-		js: ['src/app/**/*.js', '!src/app/**/*.spec.js', '!src/app/test.main.js'],
+		js: ['src/app/**/*.js', 
+			'!src/app/**/*.spec.js', 
+			'!src/app/unit.main.js'],
 		js_unit: ['src/app/**/*.unit.spec.js'],
 		
 		less: 'src/stylesheets/less/main.less',
 
-		templates: ['app/modules/**/*.tpl.html']
+		templates: ['app/**/*.tpl.html']
 	},
 
 	vendor_files: {

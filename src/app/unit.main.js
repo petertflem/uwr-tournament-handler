@@ -10,7 +10,7 @@ for (var file in window.__karma__.files) {
 requirejs.config({
     paths: {
         angular: 'common/vendor/angular/angular',
-        angular_mocks: 'common/vendor/angular-mocks/angular-mocks.js'
+        angular_mocks: 'common/vendor/angular-mocks/angular-mocks'
     },
 
     shim: {

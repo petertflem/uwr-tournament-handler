@@ -90,7 +90,7 @@ module.exports = function (grunt) {
             build_js: {
                 files: [
                     {
-                        src: ['app/**/*.js', '!app/**/*.spec.js', '!app/test.main.js'],
+                        src: ['app/**/*.js', '!app/**/*.spec.js', '!app/unit.main.js'],
                         dest: '<%= build_directory %>/',
                         expand: true,
                         cwd: 'src/'
@@ -152,14 +152,19 @@ module.exports = function (grunt) {
         requirejs: {
             build: {
                 options: {
-                    name: 'main',
-                    mainConfigFile: 'src/app/main.js',
+                    baseUrl: 'src/',
+                    name: 'app/main',
+                    mainConfigFile: '<%= build_directory %>/app/main.js',
                     out: '<%= compiled_directory %>/app/main.js',
                     paths: {
-                        require_lib: '../../build/common/vendor/requirejs/require'
+                        require_lib: '../build/common/vendor/requirejs/require'
                     },
                     include: ['require_lib']
-                }
+                },
+                wrap: {
+                    start: "(function() {",
+                    end: "}());"
+                },
             }
         },
 
