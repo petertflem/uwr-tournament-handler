@@ -8,7 +8,7 @@ define(['angular'], function (ng) {
 			scope: {},
 			transclude: true,
 			replace: true,
-			templateUrl: 'common/components/directives/templates/tabset.tpl.html'
+			template: '<ul class="nav nav-tabs" ng-transclude></ul>'
 		};
 	})
 	.directive('tab', ['$location', function ($location) {
@@ -29,7 +29,9 @@ define(['angular'], function (ng) {
 					scope.active = route === new_route;
 				});
 			},
-			templateUrl: 'common/components/directives/templates/tab.tpl.html'
+			template: '<li data-ng-class="{active: active}">' +
+						'<a href="#{{route}}">{{title}}</a>' +
+						'</li>'
 		};
 	}]);
 

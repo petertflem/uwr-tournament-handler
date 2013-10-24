@@ -200,14 +200,14 @@ module.exports = function (grunt) {
                 files: [
                     '<%= app_files.js %>'
                 ],
-                tasks: ['jshint:src'/*, 'karma:unit:run'*/, 'copy:build_js']
+                tasks: ['jshint:src', 'karma:unit:run', 'copy:build_js']
             },
 
             jsunit: {
                 files: [
                     '<%= app_files.js_unit %>'
                 ],
-                tasks: ['jshint:test'/*, 'karma:unit:run'*/],
+                tasks: ['jshint:test', 'karma:unit:run'],
                 options: {
                     livereload: false
                 }
@@ -251,7 +251,7 @@ module.exports = function (grunt) {
         'concat:build_css',
         /* copy assets */
         /* copy vendor assets */
-        'copy:build_templates',
+        'copy:build_templates', 
         'copy:build_js',
         'copy:build_vendorjs',
         'index:build',
