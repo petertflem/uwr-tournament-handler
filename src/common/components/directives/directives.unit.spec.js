@@ -9,6 +9,7 @@ define(['common/components/directives/directives', 'angular'], function (directi
 		describe('The tabset directive', function () {
 			var scope;
 			var elm;
+			var links;
 			
 			beforeEach(inject(function($rootScope, $compile) {
 				elm =   ng.element('<tabset>' +
@@ -21,15 +22,24 @@ define(['common/components/directives/directives', 'angular'], function (directi
 				var scope = $rootScope;
 				$compile(elm)(scope);
 				scope.$digest();
+
+				links = elm.find('a');
 			}));
 
+			it ('should create 3 tabs', function () {
+				expect(links.length).toBe(3);
+			});
+
 			it ('should create clickable titles', function () {
-				var titles = elm.find('a');
-				
-				expect(titles.length).toBe(3);
-				expect(titles.eq(0).text()).toBe('Home');
-				expect(titles.eq(1).text()).toBe('Tournaments');
-				expect(titles.eq(2).text()).toBe('About');
+				expect(links.eq(0).text()).toBe('Home');
+				expect(links.eq(1).text()).toBe('Tournaments');
+				expect(links.eq(2).text()).toBe('About');
+			});
+
+			it ('should create correct links', function () {
+				expect(links.eq(0).attr('href')).toBe('#/home');
+				expect(links.eq(1).attr('href')).toBe('#/tournaments');
+				expect(links.eq(2).attr('href')).toBe('#/about');
 			});
 		});
 	});

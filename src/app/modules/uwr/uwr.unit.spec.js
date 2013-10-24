@@ -6,7 +6,7 @@ define(['angular', 'app/modules/uwr/uwr'], function (ng, uwr) {
 			ng.mock.module('uwr');
 		});
 
-		describe('should have a route to', function () {
+		describe('should have a route with a template to', function () {
 			var routes;
 
 			beforeEach(inject(function($route) {

@@ -200,7 +200,10 @@ module.exports = function (grunt) {
                 files: [
                     '<%= app_files.js %>'
                 ],
-                tasks: ['jshint:src', 'karma:unit:run', 'copy:build_js']
+                tasks: ['jshint:src', 'karma:unit:run', 'copy:build_js'],
+                options: {
+                    livereload: true
+                }
             },
 
             jsunit: {
@@ -215,7 +218,10 @@ module.exports = function (grunt) {
 
             less: {
                 files: '<%= app_files.less %>',
-                tasks: ['recess:build', 'concat:build_css']
+                tasks: ['recess:build', 'concat:build_css'],
+                options: {
+                    livereload: true
+                }
             },
 
             html: {
@@ -229,7 +235,10 @@ module.exports = function (grunt) {
             },
 
             build_html: {
-                files: ['build/index.html']
+                files: ['build/index.html'],
+                options: {
+                    livereload: true
+                }
             },
 
             tpl: {
